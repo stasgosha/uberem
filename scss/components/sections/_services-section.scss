@@ -1,17 +1,34 @@
 .services-section{
 	padding: 73px 0 75px;
+
+	@media screen and (max-width: 575px){
+		padding-bottom: 40px;
+	}
 }
 
 .services-grid{
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 40px;
+
+	@media screen and (max-width: 1199px){
+		grid-gap: 20px;
+	}
+
+	@media screen and (max-width: 991px){
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media screen and (max-width: 575px){
+		grid-template-columns: 1fr;
+	}
 }
 
 .service-card{
 	position: relative;
 	background: #F3F6FB;
 	border-radius: 8px;
+	display: flex;
 
 	.card-body{
 		padding: 20px 40px 0;
@@ -30,6 +47,9 @@
 	.card-image{
 		height: 175px;
 		margin-top: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
 
 		img{
 			max-width: 100%;
@@ -93,6 +113,49 @@
 			opacity: 1;
 			visibility: visible;
 			pointer-events: auto;
+		}
+	}
+
+	@media screen and (max-width: 1199px){
+		.card-body{
+			min-height: unset;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.card-hidden-content{
+			font-size: 14px;
+		}
+
+		.card-hidden-content-text{
+			padding: 8px;
+		}
+	}
+
+	@media screen and (max-width: 991px){
+		.card-body{
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+	}
+
+	@media screen and (max-width: 575px){
+		.card-body{
+			position: relative;
+			padding-bottom: 60px;
+			padding-left: 20px;
+			padding-right: 100px;
+		}
+
+		.card-image{
+			width: 115px;
+			position: absolute;
+			right: 20px;
+			bottom: 0;
+		}
+
+		.card-title{
+			text-align: start;
 		}
 	}
 }

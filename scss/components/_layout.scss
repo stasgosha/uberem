@@ -218,16 +218,29 @@ picture, iframe, figure{
 		}
 	}
 
-	&.out{
-		bottom: -54px;
+	@media screen and (min-width: 768px){
+		&.out{
+			bottom: -54px;
+			scale: .77;
 
-		&:hover,
-		&:focus{
-			bottom: -20px;
+			&:hover,
+			&:focus{
+				bottom: -20px;
+			}
 		}
 	}
 
 	&.hide{
 		scale: 0;
+	}
+
+	@media screen and (max-width: 767px){
+		width: 90px;
+		height: 90px;
+		right: 15px;
+		bottom: 15px;
+		left: auto;
+		translate: 0;
+		font-size: 12px;
 	}
 }

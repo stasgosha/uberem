@@ -6,11 +6,9 @@ ScrollTrigger.defaults({
 document.addEventListener("DOMContentLoaded", function() {
 	gsap.registerPlugin(ScrollTrigger);
 
-	const fadeInUp = {
-		y: '100%',
-		autoAlpha: 0
-	}
+	const isMobile = $(window).width() < 1200;
 
+	// How we work
 	const howWeWorkEl = qs('.how-we-work-component');
 	const cmpContent = qs('.cmp-content', howWeWorkEl);
 	const cmpSidebar = qs('.cmp-sidebar', howWeWorkEl);
@@ -18,16 +16,18 @@ document.addEventListener("DOMContentLoaded", function() {
 	const cmpNavButtons = qsa('.cmp-nav button', howWeWorkEl);
 	const cmpSlides = qsa('.slide', cmpContent);
 
-	gsap.set(cmpSidebar, {
-		xPercent: -120,
-		scale: 1.2
-	});
+	if (!isMobile) {
+		gsap.set(cmpSidebar, {
+			xPercent: -120,
+			scale: 1.2
+		});
 
-	gsap.set(cmpContent, {
-		width: 1094,
-		x: -375 / 2 + ($(window).width() - 375 - 1094) / 2,
-		borderRadius: 8
-	});
+		gsap.set(cmpContent, {
+			width: 1094,
+			x: -375 / 2 + ($(window).width() - 375 - 1094) / 2,
+			borderRadius: 8
+		});
+	}
 
 	const hideItems = {
 		autoAlpha: 0,
@@ -94,40 +94,64 @@ document.addEventListener("DOMContentLoaded", function() {
 		scrollTrigger: {
 			trigger: howWeWorkEl,
 			start: 'top 50%',
-			end: 'top 0',
+			end: isMobile ? '+=200' : 'top 0',
 			scrub: 1,
 			// pin: true
 		},
 		ease: "power1.inOut"
 	});
 
+	if (!isMobile) {
+		howWeWorkTL
+			.to(cmpContent, {
+				width: $(window).width() - 375,
+				x: 0,
+				borderRadius: 0
+			})
+			.to(cmpSidebar, {
+				xPercent: 0,
+				scale: 1
+			}, "<")
+	}
+
 	howWeWorkTL
-		.to(cmpContent, {
-			width: $(window).width() - 375,
-			x: 0,
-			borderRadius: 0
-		})
-		.to(cmpSidebar, {
-			xPercent: 0,
-			scale: 1
-		}, "<")
 		.from(cmpNavItems, {
 			x: -50,
 			autoAlpha: 0,
 			stagger: 0.2
-		}, "<")
+		}, "<");
+
+	if (!isMobile) {
+		const howWeWorkFixTL = gsap.timeline({
+			scrollTrigger: {
+				trigger: howWeWorkEl,
+				start: 'top top',
+				end: '+=300',
+				scrub: 1,
+				pin: true
+			},
+			ease: "power1.inOut"
+		});
+	}
 
 
-	const howWeWorkFixTL = gsap.timeline({
+	// Services cards
+	const servicesGridEL = qs('.services-grid');
+	const servicesGridTL = gsap.timeline({
 		scrollTrigger: {
-			trigger: howWeWorkEl,
-			start: 'top top',
-			end: '+=300',
-			scrub: 1,
-			pin: true
+			trigger: servicesGridEL,
+			start: 'top 70%'
 		},
 		ease: "power1.inOut"
 	});
+
+	servicesGridTL
+		.from(qsa('.service-card', servicesGridEL), {
+			y: 100,
+			autoAlpha: 0,
+			duration: 1,
+			stagger: 0.2
+		});
 
 });
 

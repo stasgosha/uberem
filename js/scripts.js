@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
-	const isMobile = $(window).width() < 992;
+	const isMobile = $(window).width() < 1200;
 
 	$('.menu-opener').click(function(e){
 		e.preventDefault();

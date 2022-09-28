@@ -11,7 +11,20 @@
 
 	.section-text{
 		max-width: 414px;
-		padding-top: 13px;
+		
+		@media screen and (min-width: 768px){
+			padding-top: 13px;
+		}
+	}
+
+	@media screen and (max-width: 767px){
+		.section-top{
+			flex-direction: column;
+		}
+	}
+
+	@media screen and (max-width: 575px){
+		padding-top: 40px;
 	}
 }
 
@@ -77,7 +90,7 @@
 				}
 
 				&.current{
-					padding-left: 55px;
+					padding-left: 1.25em;
 					color: #fff;
 
 					span{
@@ -85,7 +98,7 @@
 					}
 
 					&:before{
-						transform: translateX(55px);
+						transform: translateX(1.25em);
 						opacity: 1;
 					}
 				}
@@ -111,6 +124,91 @@
 			position: absolute;
 			left: 0;
 			top: 0;
+		}
+	}
+
+	@media screen and (min-width: 1200px){
+		.cmp-sidebar{
+			.container{
+				padding: 0;
+				max-width: unset;
+			}
+		}
+	}
+
+	@media screen and (max-width: 1199px){
+		grid-template-columns: 1fr;
+		height: auto;
+		min-height: auto;
+
+		.cmp-sidebar{
+			padding: 50px 0;
+			height: auto;
+		}
+
+		.cmp-title{
+			position: static;
+			margin-bottom: 30px;
+		}
+
+		.cmp-nav{
+			display: flex;
+			justify-content: space-between;
+
+			li{
+				button{
+					font-size: 28px;
+				}
+			}
+		}
+
+		.cmp-slides{
+			position: relative;
+			
+			&:before{
+				content: '';
+				display: block;
+				padding-top: 75.117%;
+			}
+		}
+	}
+
+	@media screen and (max-width: 767px){
+		.cmp-sidebar{
+			padding: 32px 0;
+		}
+
+		.cmp-nav{
+			li{
+				button{
+					font-size: 22px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 575px){
+		.cmp-sidebar{
+			padding: 24px 0;
+		}
+
+		.cmp-title{
+			margin-bottom: 16px;
+		}
+
+		.cmp-nav{
+			gap: 16px;
+
+			li{
+				button{
+					font-size: 16px;
+					padding-left: 0 !important;
+
+					&:before{
+						display: none;
+					}
+				}
+			}
 		}
 	}
 }
@@ -168,6 +266,17 @@
 					background: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5 12c0 .5523.4477 1 1 1s1-.4477 1-1V7h5c.5523 0 1-.4477 1-1s-.4477-1-1-1H7V0c0-.5523-.4477-1-1-1S5-.5523 5 0v5H0c-.5523 0-1 .4477-1 1s.4477 1 1 1h5v5Z' fill='%23fff'/%3E%3C/svg%3E") no-repeat center center / contain;
 					pointer-events: none;
 				}
+
+				@media screen and (max-width: 575px){
+					width: 24px;
+					height: 24px;
+					box-shadow: 0 0 0 6px rgba(#5A30F0, .2);
+
+					&:before{
+						width: 10px;
+						height: 10px;
+					}
+				}
 			}
 
 			.item-text{
@@ -182,7 +291,7 @@
 				font-size: 13px;
 				line-height: 1.3;
 				font-weight: 500;
-				white-space: nowrap;
+				width: 180px;
 				transform: translateY(-20px);
 				opacity: 0;
 				visibility: hidden;
@@ -215,6 +324,8 @@
 			}
 
 			&:hover{
+				z-index: 20;
+
 				.item-opener{
 					box-shadow: none;
 					rotate: 45deg;
