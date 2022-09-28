@@ -1,0 +1,23 @@
+:root{
+	// Fonts
+	--main-font: 'TT Travels', Arial, sans-serif;
+	--second-font: var(--main-font);
+
+	// Colors
+	--gray: #404040;
+	--dark: #404040;
+	--light: #636C81;
+
+	--purple: #5A30F0;
+
+	// Params
+	--body-bg: #fff; // site background
+	--t: .3s; // animation duration
+
+	--text-color: var(--gray);
+	--text-dark: var(--dark);
+	--text-light: var(--light);
+
+	--primary: var(--purple);
+	--accent: var(--purple);
+}
